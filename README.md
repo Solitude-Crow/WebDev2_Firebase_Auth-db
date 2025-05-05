@@ -66,4 +66,4 @@ Run the application in your terminal using: npm run dev || npm start || nodemon 
 - Data Storage: User data and other relevant information are stored in Firebase Firestore.
 - Templating Engine: EJS is used for rendering dynamic HTML pages on the server side.
 - Styling: Tailwind CSS is lused for styling and CSS for animations due to preference.
-- Setup a for XXS and CSRF preventative method on your own.
+- Haven't setup a for XXS and CSRF preventative method [ lazy me :) ].
