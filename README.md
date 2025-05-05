@@ -1,4 +1,5 @@
 🔧 Prerequisites
+
 Ensure you have the following installed on your system:
 
 - Node.js (version 14 or higher)
@@ -6,7 +7,10 @@ Ensure you have the following installed on your system:
 - A Firebase project with Authentication and Firestore enabled
 
 📥 Step 1: Clone the Repository
+
+(Be sure to fork this repository before cloning)
 Open your terminal or command prompt and execute:
+
 git clone https://github.com/Solitude-Crow/WebDev2_Firebase_Auth-db.git
 cd WebDev2_Firebase_Auth-db
 
