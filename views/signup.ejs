@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("partials/head") %>
+  <title>Create Account | Your App</title>
+  <link rel="stylesheet" href="/css/animations.css">
+  <style>
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0) rotate(0); }
+      50% { transform: translateY(-20px) translateX(10px) rotate(10deg); }
+      100% { transform: translateY(0) translateX(0) rotate(0); }
+    }
+    
+    .signup-container {
+      backdrop-filter: blur(8px);
+      background-color: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .password-strength {
+      height: 5px;
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body class="animate-gradient overflow-hidden min-h-screen">
+  <!-- Particles background -->
+  <div class="particles-bg fixed inset-0 z-0"></div>
+  
+  <div class="relative z-10 flex justify-center items-center min-h-screen px-4">
+    <div class="form-container animate-fadeIn">
+      <div class="flex flex-col items-center mb-6">
+        <div class="w-20 h-20 mb-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white animate-pulse-blue">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+          </svg>
+        </div>
+        <h1 class="text-3xl font-bold text-white text-center drop-shadow-lg">Join Us Today</h1>
+      </div>
+      
+      <form action="/signup" method="POST" id="signupForm" class="signup-container p-8 rounded-xl shadow-2xl w-full max-w-md space-y-6 staggered-fade-in">
+        <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Create Your Account</h2>
+
+        <% if (typeof error !== "undefined") { %>
+          <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded">
+            <p class="font-medium"><%= error %></p>
+          </div>
+        <% } %>
+
+        <div class="form-animate">
+          <label for="email" class="block mb-2 text-sm font-medium text-gray-700">Email Address</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+              </svg>
+            </div>
+            <input type="email" name="email" id="email" class="form-input w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="your@email.com" required>
+            <p id="emailError" class="text-red-600 text-sm hidden mt-1"></p>
+          </div>
+        </div>
+        
+        <div class="form-animate">
+          <label for="password" class="block mb-2 text-sm font-medium text-gray-700">Password</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+            </div>
+            <input type="password" name="password" id="password" class="form-input w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" required minlength="6">
+          </div>
+          
+          <div class="mt-2">
+            <div class="flex justify-between mb-1">
+              <span class="text-xs text-gray-600" id="passwordStrengthText">Enter at least 6 characters</span>
+              <span class="text-xs font-semibold" id="passwordStrengthLevel"></span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full overflow-hidden">
+              <div id="passwordStrength" class="password-strength bg-gray-400 rounded-full" style="width: 0%"></div>
+            </div>
+            <p id="passwordError" class="text-red-600 text-sm mt-1 hidden">Password must be at least 6 characters</p>
+          </div>
+        </div>
+        
+        <button type="submit" class="btn btn-ripple mt-4 w-full py-3 px-4 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-medium rounded-lg transition duration-300 transform hover:-translate-y-1 form-animate" id="submitBtn">
+          Create Account
+        </button>
+        
+        <p class="text-center text-sm text-gray-600 mt-6 form-animate">
+          Already have an account? 
+          <a href="/login" class="font-medium text-blue-600 hover:text-blue-800 hover:underline transition duration-300">
+            Login here
+          </a>
+        </p>
+      </form>
+    </div>
+  </div>
+  
+  <script src="/js/animations.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('signupForm');
+      const passwordInput = document.getElementById('password');
+      const passwordError = document.getElementById('passwordError');
+      const emailInput = document.getElementById('email');
+      const emailError = document.getElementById('emailError');
+      const submitBtn = document.getElementById('submitBtn');
+      const passwordStrength = document.getElementById('passwordStrength');
+      const passwordStrengthText = document.getElementById('passwordStrengthText');
+      const passwordStrengthLevel = document.getElementById('passwordStrengthLevel');
+
+      // Password strength indicator
+      passwordInput.addEventListener('input', function() {
+        const value = this.value;
+        let strength = 0;
+        let strengthText = '';
+        let strengthColor = '';
+        let strengthLevel = '';
+        
+        if (value.length >= 6) {
+          strength += 20;
+        }
+        
+        if (value.length >= 8) {
+          strength += 20;
+        }
+        
+        if (/[A-Z]/.test(value)) {
+          strength += 20;
+        }
+        
+        if (/[0-9]/.test(value)) {
+          strength += 20;
+        }
+        
+        if (/[^A-Za-z0-9]/.test(value)) {
+          strength += 20;
+        }
+        
+        // Update strength color and text
+        if (strength <= 20) {
+          strengthColor = 'bg-red-500';
+          strengthText = 'Very weak';
+          strengthLevel = '1/5';
+        } else if (strength <= 40) {
+          strengthColor = 'bg-orange-500';
+          strengthText = 'Weak';
+          strengthLevel = '2/5';
+        } else if (strength <= 60) {
+          strengthColor = 'bg-yellow-500';
+          strengthText = 'Medium';
+          strengthLevel = '3/5';
+        } else if (strength <= 80) {
+          strengthColor = 'bg-blue-500';
+          strengthText = 'Strong';
+          strengthLevel = '4/5';
+        } else {
+          strengthColor = 'bg-green-500';
+          strengthText = 'Very strong';
+          strengthLevel = '5/5';
+        }
+
+        // Update the UI
+        passwordStrength.className = `password-strength ${strengthColor}`;
+        passwordStrength.style.width = `${strength}%`;
+        passwordStrengthText.textContent = strengthText;
+        passwordStrengthLevel.textContent = strengthLevel;
+        
+        // Show/hide password error
+        if (value.length < 6) {
+          passwordError.classList.remove('hidden');
+        } else {
+          passwordError.classList.add('hidden');
+        }
+      });
+
+      // Email validation with enhanced feedback
+      emailInput.addEventListener('input', function() {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(this.value) && this.value.length > 0) {
+          emailError.classList.remove('hidden');
+          emailError.textContent = 'Please enter a valid email address';
+          
+          // Add shake animation if email is invalid
+          this.classList.add('border-red-500');
+          this.classList.add('animate-shake');
+          setTimeout(() => {
+            this.classList.remove('animate-shake');
+          }, 500);
+        } else {
+          emailError.classList.add('hidden');
+          this.classList.remove('border-red-500');
+          
+          // Add success feedback if email is valid
+          if (emailRegex.test(this.value) && this.value.length > 0) {
+            this.classList.add('border-green-500');
+          } else {
+            this.classList.remove('border-green-500');
+          }
+        }
+      });
+
+      // Form submission with animation
+      form.addEventListener('submit', function(e) {
+        let isValid = true;
+
+        // Validate email
+        if (!emailInput.value || !emailInput.validity.valid) {
+          emailError.classList.remove('hidden');
+          emailError.textContent = 'Please enter a valid email address';
+          isValid = false;
+          
+          // Shake animation
+          emailInput.classList.add('animate-shake');
+          setTimeout(() => {
+            emailInput.classList.remove('animate-shake');
+          }, 500);
+        }
+
+        // Validate password
+        if (passwordInput.value.length < 6) {
+          passwordError.classList.remove('hidden');
+          passwordError.textContent = 'Password must be at least 6 characters';
+          isValid = false;
+          
+          // Shake animation
+          passwordInput.classList.add('animate-shake');
+          setTimeout(() => {
+            passwordInput.classList.remove('animate-shake');
+          }, 500);
+        }
+
+        if (!isValid) {
+          e.preventDefault();
+        } else {
+          // Add loading state to button
+          submitBtn.innerHTML = '<span class="inline-block animate-spin mr-2">↻</span> Creating Account...';
+          submitBtn.disabled = true;
+        }
+      });
+      
+      // Add shake animation
+      document.head.insertAdjacentHTML('beforeend', `
+        <style>
+          @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-5px); }
+            40%, 80% { transform: translateX(5px); }
+          }
+          .animate-shake {
+            animation: shake 0.5s ease-in-out;
+          }
+        </style>
+      `);
+    });
+  </script>
+</body>
+</html>

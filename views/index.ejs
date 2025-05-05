@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("partials/head") %>
+    <title>Mindanao Kokusai Daigaku - Admissions</title>
+  </head>
+  <body class="bg-gray-100 min-h-screen">
+    <!-- Header/Navigation -->
+    <%- include("partials/navigation") %>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <canvas id="particle-canvas" class="particle-canvas"></canvas>
+      <div class="hero-content">
+        <h1 class="hero-title">Shape Your Future at MKD</h1>
+        <p class="hero-subtitle">
+          Begin your journey to academic excellence and global opportunities at
+          Mindanao Kokusai Daigaku
+        </p>
+        <a href="/users/new" class="hero-button">
+          Apply Now
+          <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Featured Programs -->
+    <div class="py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2
+          class="text-3xl font-bold text-center mb-12 animate__animated animate__fadeInUp"
+        >
+          Featured Programs
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Program Card 1 -->
+          <div
+            class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 card-hover animate__animated animate__fadeInUp program-card"
+          >
+            <div class="bg-blue-600 h-2"></div>
+            <div class="p-6 program-card-content">
+              <div
+                class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-4"
+              >
+                <i class="fas fa-laptop-code text-blue-600 text-xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">
+                Bachelor of Science in Information Systems
+              </h3>
+              <p class="text-gray-600 mb-4 program-description">
+                The Information Systems program provides students with
+                foundation knowledge on organizations and Information and
+                Communications Technology (ICT).
+              </p>
+              <a
+                href="/programs/information-systems"
+                class="text-blue-600 hover:text-blue-800 font-medium"
+                >Learn more <i class="fas fa-chevron-right ml-1 text-sm"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Program Card 2 -->
+          <div
+            class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 card-hover animate__animated animate__fadeInUp animate__delay-1s program-card"
+          >
+            <div class="bg-green-600 h-2"></div>
+            <div class="p-6 program-card-content">
+              <div
+                class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-4"
+              >
+                <i class="fas fa-chart-line text-green-600 text-xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">
+                Bachelor of Arts in International Studies
+              </h3>
+              <p class="text-gray-600 mb-4 program-description">
+                A four-year undergraduate program which aims to produce
+                competent future leaders in understanding global affairs.
+              </p>
+              <a
+                href="/programs/international-studies"
+                class="text-green-600 hover:text-green-800 font-medium"
+                >Learn more <i class="fas fa-chevron-right ml-1 text-sm"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Program Card 3 -->
+          <div
+            class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 card-hover animate__animated animate__fadeInUp animate__delay-2s program-card"
+          >
+            <div class="bg-purple-600 h-2"></div>
+            <div class="p-6 program-card-content">
+              <div
+                class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mb-4"
+              >
+                <i class="fas fa-heart text-purple-600 text-xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-2">
+                Bachelor of Human Services
+              </h3>
+              <p class="text-gray-600 mb-4 program-description">
+                The Bachelor in Human Services is designed to train
+                professionals who can assist individuals and communities to
+                function effectively.
+              </p>
+              <a
+                href="/programs/human-services"
+                class="text-purple-600 hover:text-purple-800 font-medium"
+                >Learn more <i class="fas fa-chevron-right ml-1 text-sm"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <a
+            href="/programs"
+            class="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 animate__animated animate__pulse animate__infinite animate__slower"
+          >
+            View All Programs
+            <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admissions Process -->
+    <div class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2
+          class="text-3xl font-bold text-center mb-4 animate__animated animate__fadeInUp"
+        >
+          Admission Process
+        </h2>
+        <p
+          class="text-center text-gray-600 mb-12 max-w-3xl mx-auto animate__animated animate__fadeInUp"
+        >
+          Follow these simple steps to begin your academic journey at Mindanao
+          Kokusai Daigaku
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Step 1 -->
+          <div class="text-center animate__animated animate__fadeInUp">
+            <div
+              class="w-16 h-16 rounded-full bg-blue-600 flex items-center justify-center mx-auto mb-4"
+            >
+              <span class="text-white text-xl font-bold">1</span>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Apply Online</h3>
+            <p class="text-gray-600">
+              Complete the online application form with your personal and
+              academic information
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div
+            class="text-center animate__animated animate__fadeInUp animate__delay-1s"
+          >
+            <div
+              class="w-16 h-16 rounded-full bg-blue-600 flex items-center justify-center mx-auto mb-4"
+            >
+              <span class="text-white text-xl font-bold">2</span>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Entrance Examination</h3>
+            <p class="text-gray-600">
+              Take the entrance examination on your scheduled date
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div
+            class="text-center animate__animated animate__fadeInUp animate__delay-2s"
+          >
+            <div
+              class="w-16 h-16 rounded-full bg-blue-600 flex items-center justify-center mx-auto mb-4"
+            >
+              <span class="text-white text-xl font-bold">3</span>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Document Verification</h3>
+            <p class="text-gray-600">
+              Submit your academic records and required documents for
+              verification
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div
+            class="text-center animate__animated animate__fadeInUp animate__delay-3s"
+          >
+            <div
+              class="w-16 h-16 rounded-full bg-blue-600 flex items-center justify-center mx-auto mb-4"
+            >
+              <span class="text-white text-xl font-bold">4</span>
+            </div>
+            <h3 class="text-lg font-semibold mb-2">Enrollment</h3>
+            <p class="text-gray-600">
+              Complete enrollment and begin your academic journey at MKD
+            </p>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <a
+            href="/users/new"
+            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg inline-block transition-all duration-300 animate__animated animate__pulse animate__infinite animate__slower"
+          >
+            Start Your Application
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="bg-blue-600 py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2
+          class="text-3xl font-bold text-white mb-4 animate__animated animate__fadeInUp"
+        >
+          Ready to Begin Your Journey?
+        </h2>
+        <p
+          class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto animate__animated animate__fadeInUp animate__delay-1s"
+        >
+          Join our diverse community of learners and innovators at Mindanao
+          Kokusai Daigaku
+        </p>
+        <div class="animate__animated animate__fadeInUp animate__delay-2s">
+          <a
+            href="/users/new"
+            class="bg-white hover:bg-gray-100 text-blue-600 font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300 inline-block transform hover:scale-105 mr-4"
+          >
+            Apply Now
+          </a>
+          <a
+            href="/contact"
+            class="border-2 border-white text-white hover:bg-white hover:text-blue-600 font-bold py-3 px-8 rounded-lg text-lg transition-all duration-300 inline-block"
+          >
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <%- include("partials/footer") %>
+
+    <!-- Include animation scripts -->
+    <script src="/js/animations/scroll-animations.js"></script>
+    <script src="/js/animations/particle-animations.js"></script>
+  </body>
+</html>

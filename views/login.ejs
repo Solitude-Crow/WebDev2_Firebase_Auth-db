@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include("partials/head") %>
+  <title>Login | Your App</title>
+  <link rel="stylesheet" href="/css/animations.css">
+  <style>
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0) rotate(0); }
+      50% { transform: translateY(-20px) translateX(10px) rotate(10deg); }
+      100% { transform: translateY(0) translateX(0) rotate(0); }
+    }
+    
+    .login-container {
+      backdrop-filter: blur(8px);
+      background-color: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+  </style>
+</head>
+<body class="animate-gradient overflow-hidden min-h-screen">
+  <!-- Particles background -->
+  <div class="particles-bg fixed inset-0 z-0"></div>
+  
+  <div class="relative z-10 flex justify-center items-center min-h-screen px-4">
+    <div class="form-container animate-fadeIn">
+      <div class="flex flex-col items-center mb-6">
+        <div class="w-20 h-20 mb-4 rounded-full bg-blue-600 flex items-center justify-center text-white animate-pulse-blue">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+          </svg>
+        </div>
+        <h1 class="text-3xl font-bold text-white text-center drop-shadow-lg">Welcome Back</h1>
+      </div>
+      
+      <form action="/login" method="POST" class="login-container p-8 rounded-xl shadow-2xl w-full max-w-md space-y-6 staggered-fade-in">
+        <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Login to your account</h2>
+
+        <% if (typeof error !== "undefined") { %>
+          <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded">
+            <p class="font-medium"><%= error %></p>
+          </div>
+        <% } %>
+
+        <div class="form-animate">
+          <label for="email" class="block mb-2 text-sm font-medium text-gray-700">Email Address</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+              </svg>
+            </div>
+            <input type="email" name="email" class="form-input w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="your@email.com" required>
+          </div>
+        </div>
+        
+        <div class="form-animate">
+          <label for="password" class="block mb-2 text-sm font-medium text-gray-700">Password</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+            </div>
+            <input type="password" name="password" class="form-input w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" required>
+          </div>
+        </div>
+        
+        <div class="flex items-center justify-between form-animate">
+          <div class="flex items-center">
+            <input id="remember-me" name="remember-me" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+            <label for="remember-me" class="ml-2 text-sm text-gray-700">Remember me</label>
+          </div>
+          <a href="#" class="text-sm font-medium text-blue-600 hover:underline">Forgot password?</a>
+        </div>
+        
+        <button type="submit" class="btn btn-ripple w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition duration-300 transform hover:-translate-y-1 form-animate">
+          Login
+        </button>
+        
+        <p class="text-center text-sm text-gray-600 mt-6 form-animate">
+          Don't have an account? 
+          <a href="/signup" class="font-medium text-blue-600 hover:text-blue-800 hover:underline transition duration-300">
+            Create one now
+          </a>
+        </p>
+      </form>
+    </div>
+  </div>
+  
+  <script src="/js/animations.js"></script>
+</body>
+</html>
